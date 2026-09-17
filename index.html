@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Zoey Job Radar · 2026.09.15</title>
+<style>
+:root{--bg:#fff7fb;--card:#fff;--ink:#241d24;--muted:#756a73;--pink:#e86c9a;--soft:#fbe4ee;--line:#f0dce5;--green:#3e8f70}
+*{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fff5fa 0,#fff 45%);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink)} 
+.wrap{max-width:1180px;margin:auto;padding:34px 22px 60px} .hero{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:28px}
+h1{font-size:42px;letter-spacing:-1.8px;margin:0 0 8px} .sub{color:var(--muted);font-size:15px;line-height:1.7}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px} .badge{padding:7px 11px;border-radius:999px;background:var(--soft);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0} .stat{background:#fff;border:1px solid var(--line);border-radius:18px;padding:17px} .stat b{display:block;font-size:27px} .stat span{font-size:12px;color:var(--muted)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0} input,select{border:1px solid var(--line);background:#fff;border-radius:12px;padding:11px 13px;font:inherit;outline:none} input{min-width:260px;flex:1}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px} .job{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 24px rgba(55,25,45,.045);display:flex;flex-direction:column;min-height:285px}
+.top{display:flex;justify-content:space-between;gap:12px} .company{font-size:13px;color:var(--pink);font-weight:700} h2{font-size:19px;margin:7px 0 6px;letter-spacing:-.3px} .city{font-size:13px;color:var(--muted)} .score{font-size:22px;font-weight:800;color:var(--pink)} .score small{font-size:10px;font-weight:600;color:var(--muted)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0} .tag{font-size:11px;padding:5px 8px;border-radius:8px;background:#faf1f5;color:#755c68} .why{font-size:13px;line-height:1.65;color:#51464e;flex:1} .meta{font-size:11px;color:var(--muted);margin-top:13px}
+.actions{display:flex;gap:8px;margin-top:15px} .btn{text-decoration:none;padding:10px 12px;border-radius:11px;font-size:12px;font-weight:700;border:1px solid var(--line)} .primary{background:var(--ink);color:white;border-color:var(--ink)} 
+.note{margin:24px 0;padding:15px 17px;border:1px solid #efd3df;background:#fff8fb;border-radius:15px;color:#604f58;font-size:13px;line-height:1.7}
+.footer{margin-top:30px;color:var(--muted);font-size:11px;line-height:1.7}
+@media(max-width:760px){h1{font-size:32px}.hero{display:block}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.wrap{padding:25px 15px 45px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<div>
+<div class="company">ZOey · JOB RADAR / DAILY UPDATE</div>
+<h1>今天的秋招雷达</h1>
+<div class="sub">2026 年 9 月 15 日更新 · 基于今日公开招聘信息筛选<br>优先：大公司 × 品牌/内容/视觉 × 国际传播 × 海外/外派</div>
+<div class="badges"><span class="badge">艺术硕士</span><span class="badge">UNU Macau Communications</span><span class="badge">视觉 / 内容</span><span class="badge">海外机会</span></div>
+</div>
+</section>
+<div class="stats">
+<div class="stat"><b>20</b><span>今日重点岗位</span></div>
+<div class="stat"><b>15</b><span>海外 / 全球方向</span></div>
+<div class="stat"><b>12</b><span>95+ 高匹配</span></div>
+<div class="stat"><b>9.15</b><span>最后更新日期</span></div>
+</div>
+<div class="note"><b>今天最值得先投：</b>影石海外社媒视觉、传音全球设计、荣耀营销创意、淘宝闪购AI视觉、得物视觉、GOC出海品牌、vivo全球校招。<br>其中 vivo 的公开网申节点为 9 月 15 日 12:00，今天属于紧急项。其余岗位以页面显示的截止时间或官方招聘页面为准。</div>
+<div class="toolbar">
+<input id="search" placeholder="搜索公司、岗位、海外、视觉、品牌……">
+<select id="filter"><option value="all">全部</option><option value="海外">海外 / 全球</option><option value="视觉">视觉 / 设计</option><option value="内容">内容 / 传播</option><option value="品牌">品牌 / 营销</option><option value="AI">AI</option></select>
+</div>
+<div class="grid" id="grid"></div>
+<div class="footer">数据更新时间：2026-09-15。岗位状态会快速变化，页面中的“岗位详情/官方招聘”链接用于投递前二次核验。部分岗位来自企业官方招聘页，部分来自公开校招岗位页；页面不会把未核实的职位标记为“已确认开放”。</div>
+</div>
+<script>
+const jobs = [{"company": "传音控股", "title": "视觉设计师 / 动效设计师 / 交互设计师", "city": "深圳 / 上海 / 重庆 / 海外", "type": "海外 · 视觉设计", "score": 98, "deadline": "2026-09-22", "source": "https://transsion.zhiye.com/", "source_label": "官方投递", "why": "全球化消费电子公司，设计岗位明确覆盖视觉、动效、交互，并有海外工作地点。", "tags": ["海外", "视觉", "大厂", "全球化"]}, {"company": "影石 Insta360", "title": "Visual Designer（海外社媒）", "city": "深圳", "type": "海外 · 品牌视觉", "score": 99, "deadline": "2027-08-31", "source": "https://www.recruit.net/job/visual-designer--jobs/CC5C3F7A33DF6118", "source_label": "岗位详情", "why": "直接做 Instagram、X、LinkedIn、YouTube 社媒视觉，与你的 UNU 国际传播和视觉能力高度匹配。", "tags": ["海外", "社媒", "视觉", "品牌"]}, {"company": "荣耀", "title": "营销创意管培生", "city": "全球", "type": "海外 · 品牌营销", "score": 98, "deadline": "待官网确认", "source": "https://www.honor.com/cn/career/", "source_label": "官方招聘入口", "why": "营销创意方向覆盖 KV、TVC、产品视频、发布会、全球媒体与 KOL，并明确全球派遣。", "tags": ["全球派遣", "品牌", "内容", "视觉"]}, {"company": "vivo", "title": "市场 / 营销 / 设计 / 产品运营", "city": "东莞 / 深圳 / 上海 / 北京 / 海外", "type": "海外 · 综合校招", "score": 96, "deadline": "2026-09-15 12:00（网申节点）", "source": "https://hr.vivo.com/", "source_label": "官方招聘", "why": "2027全球校招覆盖市场、营销、设计、产品运营，工作地点包含海外。今天属于紧急节点。", "tags": ["海外", "市场", "设计", "紧急"]}, {"company": "SHEIN", "title": "全球化业务 / 设计 / 市场方向", "city": "广州及全球业务", "type": "海外 · 品牌出海", "score": 96, "deadline": "以官网岗位为准", "source": "https://careers.shein.com/", "source_label": "官方招聘", "why": "全球时尚与生活方式平台，业务覆盖近160个国家，适合内容、品牌、全球化方向。", "tags": ["出海", "品牌", "全球化", "大厂"]}, {"company": "亚马逊", "title": "2027校园招聘：商业 / 全球开店 / 广告等方向", "city": "中国及全球业务", "type": "海外 · 商业品牌", "score": 94, "deadline": "以官网岗位为准", "source": "https://www.amazon.jobs/content/en/career-programs/university", "source_label": "官方招聘", "why": "全职面向2026年10月至2027年9月毕业生，业务天然连接全球市场、广告和跨境电商。", "tags": ["全球", "商业", "大厂", "出海"]}, {"company": "美团", "title": "海外市场类", "city": "北京 / 海外业务", "type": "海外 · 市场营销", "score": 93, "deadline": "2027-10-31", "source": "https://www.nowcoder.com/jobs/detail/464571", "source_label": "岗位详情", "why": "参与商业化广告全链路营销、行业分析、项目包装和市场增长，海外业务校招持续开放。", "tags": ["海外", "营销", "互联网"]}, {"company": "美图", "title": "创意内容 / 品牌策划", "city": "厦门 / 相关业务", "type": "内容 · 品牌", "score": 96, "deadline": "以官方页面为准", "source": "https://hr.meitu.com/en/jobIntern/318160ba-9cb3-4fc9-a073-d3030e7c3e03", "source_label": "官方岗位", "why": "内容创作、品牌策划、视频图文、meme/vlog/漫画等形式，艺术与传媒背景优先。", "tags": ["内容", "品牌", "视觉", "AI"]}, {"company": "淘宝闪购", "title": "AI视觉设计师", "city": "上海 / 杭州 / 北京", "type": "AI · 视觉设计", "score": 99, "deadline": "2027-03-18", "source": "https://www.shixiseng.com/intern/inn_yl3ep7gsmxmu", "source_label": "岗位详情", "why": "AI视觉内容生产、海报、视频、商品图和Agent场景品牌表达，与你的艺术背景和AI工作流非常匹配。", "tags": ["AI", "视觉", "品牌", "大厂"]}, {"company": "得物", "title": "视觉设计师", "city": "上海", "type": "视觉 · 品牌", "score": 98, "deadline": "以官方校招页面为准", "source": "https://www.wondercv.com/xiaozhao/poizon-design-2027-fall-campus-recruitment-shanghai-14802-882b82/", "source_label": "岗位详情", "why": "品牌视觉体系、大型活动、动效、全渠道视觉和AIGC，适合艺术硕士+作品集路线。", "tags": ["视觉", "品牌", "AIGC", "互联网"]}, {"company": "三棵树", "title": "品牌岗", "city": "全国", "type": "品牌 · 视觉", "score": 92, "deadline": "2026秋招", "source": "https://career.tjcu.edu.cn/correcruit/content/id/14448.html", "source_label": "招聘信息", "why": "品牌岗包含视觉设计、平面项目落地和新闻稿件等，内容与视觉结合度高。", "tags": ["品牌", "视觉", "内容"]}, {"company": "三棵树", "title": "海外营销岗", "city": "海外国家", "type": "海外 · 市场营销", "score": 94, "deadline": "2026秋招", "source": "https://career.tjcu.edu.cn/correcruit/content/id/14448.html", "source_label": "招聘信息", "why": "负责海外国家市场开拓、市场调研、客户开发与项目落地，明确海外工作地点。", "tags": ["海外", "营销", "外派"]}, {"company": "途游游戏", "title": "海外创意策划", "city": "上海", "type": "海外 · 内容创意", "score": 95, "deadline": "2027-09-01", "source": "https://www.nowcoder.com/jobs/detail/464034", "source_label": "岗位详情", "why": "面向欧美等海外市场做广告创意、脚本、镜头设计和宣传内容，对内容与跨文化敏感度要求高。", "tags": ["海外", "创意", "内容", "游戏"]}, {"company": "哔哩哔哩", "title": "游戏市场营销（海外发行）", "city": "上海", "type": "海外 · 内容营销", "score": 94, "deadline": "以校招页面为准", "source": "https://xiaozhaobao.com.cn/job/1064347", "source_label": "岗位详情", "why": "海外发行市场营销，涉及PR、KOL、广告素材、网页、艺人合作和本地化协作。", "tags": ["海外", "营销", "内容", "游戏"]}, {"company": "传音控股", "title": "全球校园招聘：市场营销 / 全球化运营", "city": "深圳 / 海外", "type": "海外 · 市场", "score": 95, "deadline": "2026秋招", "source": "https://transsion.zhiye.com/", "source_label": "官方投递", "why": "2027全球校园招聘明确覆盖市场营销和全球化运营，品牌业务覆盖多个新兴市场。", "tags": ["海外", "市场", "全球化"]}, {"company": "GOC / Global OneClick", "title": "海外市场运营 / 视觉设计 / 新媒体运营", "city": "深圳 / 长沙 / 香港 / 珠海 / 东京 / 新加坡", "type": "海外 · 出海品牌", "score": 97, "deadline": "2026-11-11", "source": "https://www.wondercv.com/xiaozhao/goc-2027-fall-campus-recruitment-15049-59057a/", "source_label": "招聘信息", "why": "AI Native品牌出海平台，岗位覆盖海外市场、内容、新媒体、视觉设计，且有东京、新加坡等地点。", "tags": ["出海", "AI", "视觉", "内容"]}, {"company": "蜜雪冰城", "title": "2027届校招：视觉设计方向", "city": "郑州", "type": "视觉 · 品牌", "score": 90, "deadline": "以官网为准", "source": "https://watchjobs.net/zh/explore/job/c951-190861082/2027%E5%B1%8A%E6%A0%A1%E6%8B%9B-%E8%A7%86%E8%A7%89%E8%AE%BE%E8%AE%A1%E6%96%B9%E5%90%91-J13405-%E8%9C%9C%E9%9B%AA%E5%86%B0%E5%9F%8E", "source_label": "岗位详情", "why": "品牌视觉、H5、海报、线上线下宣发与门店空间设计，适合作品集型候选人。", "tags": ["视觉", "品牌", "设计"]}, {"company": "乐元素", "title": "美术设计 / 平面设计 / 游戏视频 / 海外市场营销", "city": "北京 / 上海", "type": "游戏 · 内容 · 海外", "score": 92, "deadline": "全年开放", "source": "https://career.nankai.edu.cn/correcruit/content/id/117607.html", "source_label": "招聘信息", "why": "同时覆盖美术、平面、视频、内容运营、海外版本运营和海外市场营销。", "tags": ["海外", "视觉", "内容", "游戏"]}, {"company": "荣耀", "title": "营销创意方向", "city": "全球", "type": "全球 · 内容营销", "score": 97, "deadline": "以官网为准", "source": "https://career.nankai.edu.cn/recruitment/content/type/2/id/6037.html", "source_label": "招聘信息", "why": "全球派遣、全球媒体/KOL、产品故事、发布会和核心传播物料，与你的国际传播经历高度相关。", "tags": ["全球派遣", "品牌", "传播", "视觉"]}, {"company": "腾讯", "title": "2027海外校园招聘：产品 / 设计等", "city": "美国 / 新加坡 / 日本 / 英国 / 荷兰等", "type": "海外 · 大厂", "score": 94, "deadline": "以海外校招页面为准", "source": "https://hr.tencent.com/faqdetail.html", "source_label": "官方招聘", "why": "官方已启动2027海外校园招聘，覆盖多国，包含产品和设计等方向，并提供签证与居留支持。", "tags": ["海外", "大厂", "设计", "产品"]}];
+const grid=document.getElementById('grid'), search=document.getElementById('search'), filter=document.getElementById('filter');
+function render(){
+ const q=search.value.trim().toLowerCase(), f=filter.value;
+ const list=jobs.filter(j=>(!q || (j.company+j.title+j.type+j.city+j.why+j.tags.join(' ')).toLowerCase().includes(q)) && (f==='all'||(j.type+j.tags.join(' ')).includes(f)));
+ grid.innerHTML=list.map(j=>`<article class="job">
+ <div class="top"><div><div class="company">${j.company}</div><h2>${j.title}</h2><div class="city">📍 ${j.city}</div></div><div class="score">${j.score}<small>% match</small></div></div>
+ <div class="tags">${j.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+ <div class="why">${j.why}</div>
+ <div class="meta">截止：${j.deadline}</div>
+ <div class="actions"><a class="btn primary" href="${j.source}" target="_blank" rel="noopener">${j.source_label} ↗</a></div>
+ </article>`).join('');
+}
+search.addEventListener('input',render); filter.addEventListener('change',render); render();
+</script>
+</body>
+</html>
