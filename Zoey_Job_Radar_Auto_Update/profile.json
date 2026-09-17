@@ -1,0 +1,69 @@
+{
+  "name": "Zoey Zheng",
+  "headline": "Art × Visual Culture × International Communications × Technology",
+  "education": [
+    "China Academy of Art, Master's in Painting / Art Research, 2024–2027",
+    "China Academy of Art, Fine Arts / Oil Painting background"
+  ],
+  "experience": [
+    "UNU Macau Communications Assistant: institutional social media, website content, bilingual writing, research-to-public-content translation, publication layout/design, video, international events, cross-cultural communication",
+    "Hangzhou Asian Games media reception: bilingual coordination with domestic and international media",
+    "China Academy of Art admissions and cultural/visual project experience"
+  ],
+  "skills": [
+    "Visual storytelling",
+    "Brand and content strategy",
+    "Bilingual Chinese-English communications",
+    "Photoshop",
+    "Illustrator",
+    "Canva",
+    "Premiere Pro",
+    "AI-assisted research and creative workflows",
+    "Research synthesis",
+    "Cross-cultural communications"
+  ],
+  "target_roles": [
+    "visual designer",
+    "brand",
+    "content",
+    "communications",
+    "social media",
+    "marketing",
+    "international communications",
+    "global marketing",
+    "product marketing",
+    "creative strategy",
+    "creative",
+    "art and culture",
+    "content operations",
+    "overseas operations",
+    "brand strategy"
+  ],
+  "priority_company_signals": [
+    "high growth",
+    "IPO",
+    "pre-IPO",
+    "listing",
+    "government-supported strategic industry",
+    "AI",
+    "robotics",
+    "embodied intelligence",
+    "commercial space",
+    "new energy",
+    "advanced manufacturing",
+    "semiconductor",
+    "Chinese brand going global",
+    "specialized and innovative enterprise",
+    "hidden gem",
+    "global expansion"
+  ],
+  "score_weights": {
+    "role_fit": 30,
+    "brand_content_visual": 20,
+    "international_overseas": 15,
+    "company_growth": 15,
+    "policy_industry": 10,
+    "company_scale": 5,
+    "urgency": 5
+  }
+}
